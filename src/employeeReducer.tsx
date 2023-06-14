@@ -30,16 +30,9 @@ const employeeReducer: any = (state = initialState, action: any) => {
       };
 
     case "Edit":
-      //   const { id, name, address, monbileNum } = action.payload;
-      let editedEmployees = state.employees.filter((el: any) => {
+    let editedEmployees = state.employees.filter((el: any) => {
         if (el.id === action.payload.id) {
-          return {
-            ...el,
-            id: action.payload.id,
-            name: action.payload.name,
-            address: action.payload.address,
-            mobileNum: action.payload.mobileNum,
-          };
+          return Object.assign(el, action.payload);
         }
         return el;
       });
